@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CreateSelectionTester : MonoBehaviour
 {
+    [SerializeField] SlotsManager slotsManager;
     [SerializeField] Sprite sprite;
     [SerializeField] int count;
     // Start is called before the first frame update
@@ -14,6 +15,7 @@ public class CreateSelectionTester : MonoBehaviour
 
     private void CreateSelectableOptions()
     {
+        List<Transform> options = new List<Transform>();
         for (int i = 0; i < count; i++)
         {
             GameObject go = new GameObject("test selection");
@@ -28,6 +30,8 @@ public class CreateSelectionTester : MonoBehaviour
                 Random.Range(0f, 1f),
                 Random.Range(0f, 1f)
             );
+            options.Add(go.transform);
         }
+        slotsManager.PassOnSlotSelections(options);
     }
 }
