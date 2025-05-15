@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CreateSelectionTester : MonoBehaviour
 {
-    [SerializeField] SlotsManager slotsManager;
+    [SerializeField] SelectableItemDriver slotsManager;
     [SerializeField] Sprite sprite;
     [SerializeField] int count;
     // Start is called before the first frame update

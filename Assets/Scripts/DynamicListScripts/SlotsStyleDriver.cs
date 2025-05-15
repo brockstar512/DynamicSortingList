@@ -11,6 +11,7 @@ public class SlotsStyleDriver : MonoBehaviour
     [SerializeField] Transform SlotPrefab;
     [SerializeField] Orientation orientation;
     [SerializeField] SpacingType spacingType;
+    public Transform GetSlotsParent => SlotsParent;
 
     private enum Orientation
     {
