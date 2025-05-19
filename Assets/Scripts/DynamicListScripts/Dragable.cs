@@ -38,6 +38,8 @@ public class Dragable : MonoBehaviour
 
     void OnMouseUp()
     {
+        EventMediator.Instance.Publish(CursorInputs.MouseUp);
+
         //Debug.Log("Mouse Up 1");
 
         //if this is close to the slot that it is targeting
@@ -50,11 +52,14 @@ public class Dragable : MonoBehaviour
 
         //    return;
         //}
-
-
-
-        //transform.position = _originalPos;
         _isDragging = false;
+
+
+        //if not correct position
+        //transform.position = _originalPos;
+
+
+        //else
         //Debug.Log("Mouse Up 3");
         freeUpAvaiableSlot?.Invoke(_originalPos);
 
@@ -64,9 +69,9 @@ public class Dragable : MonoBehaviour
 
     void OnMouseDown()
     {
+        EventMediator.Instance.Publish(CursorInputs.MouseDown);
         _isDragging = true;
         _offset = GetMousePos() - (Vector2)transform.position;
-        Debug.Log("Mouse down");
     }
 
     private void OnDestroy()

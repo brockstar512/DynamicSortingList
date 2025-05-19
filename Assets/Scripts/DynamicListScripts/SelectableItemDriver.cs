@@ -16,7 +16,6 @@ public class SelectableItemDriver : MonoBehaviour
         seq = DOTween.Sequence();
         slotsSettings = GetComponent<SlotsStyleDriver>();
 
-        Debug.Log($"slot aprent child count {slotsSettings.GetSlotsParent.childCount}");
         for (int i = 0; i < slotsSettings.GetSlotsParent.childCount; i++)
         {
             Transform? Item = SelectRandomizedItem();
@@ -27,10 +26,8 @@ public class SelectableItemDriver : MonoBehaviour
 
             // Append the movement + fade for each item to the sequence (play one after another)
             seq.Join(MoveItemToSlot(Item, targetSlot.position));
-            Debug.Log($"Moving item {Item.gameObject.name} to slot target {targetSlot.gameObject.name} {i}");
         }
 
-        // No need to call seq.Play() - sequence starts automatically
     }
     
     public void PassOnSlotSelections(List<Transform> _slots)
