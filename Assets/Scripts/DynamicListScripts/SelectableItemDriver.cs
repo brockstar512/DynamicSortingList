@@ -16,7 +16,9 @@ public class SelectableItemDriver : MonoBehaviour
         seq = DOTween.Sequence();
         slotsSettings = GetComponent<SlotsStyleDriver>();
 
-        for (int i = 0; i < slotsSettings.GetSlotsParent.childCount; i++)
+        //this is iterating backwards because going forwards the list is decreasing making the pointer move forwards but the number is shrinking
+        //making it miss some. while loop could also work
+        for (int i = slotsSettings.GetSlotsParent.childCount - 1; i >= 0; i--)
         {
             Transform? Item = SelectRandomizedItem();
             if (Item == null)
